@@ -3,10 +3,37 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:StudyTracker"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        xmlns:local="clr-namespace:StudyTracker" 
+		xmlns:view="clr-namespace:StudyTracker.View"
+		xmlns:vms="clr-namespace:StudyTracker.ViewModel.ViewModels" 
+		d:DataContext="{d:DesignInstance Type=vms:MainViewModel}"
+		mc:Ignorable="d"
+        Title="StudyTracker" Height="450" Width="800">
+	<Grid>
 
-    </Grid>
+		<Grid.Resources>
+			<DataTemplate DataType="{x:Type vms:CalendarViewModel}">
+				<view:Calendar/>
+			</DataTemplate>
+			<DataTemplate DataType="{x:Type vms:BacklogViewModel}">
+				<view:Backlog/>
+			</DataTemplate>
+			<DataTemplate DataType="{x:Type vms:GantDiagrammViewModel}">
+				<view:GantDiagram/>
+			</DataTemplate>
+		</Grid.Resources>
+		
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="70"></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+
+		<Grid.RowDefinitions>
+			<RowDefinition	Height="auto"></RowDefinition>
+			<RowDefinition	></RowDefinition>
+		</Grid.RowDefinitions>
+		<view:Menu DataContext="{Binding SidePanelViewModel}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="2"/>
+		<view:SidePanel Grid.Row="1" Grid.Column="0"/>
+		<ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding CurrentViewModel}"/>
+	</Grid>
 </Window>
