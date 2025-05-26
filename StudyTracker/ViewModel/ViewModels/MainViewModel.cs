@@ -21,11 +21,6 @@
         public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
 
         /// <summary>
-        /// Data context of side panel.
-        /// </summary>
-        public SidePanelViewModel SidePanelViewModel;
-
-        /// <summary>
         /// Command that change main field of window.
         /// </summary>
         public ICommand NavigeteTo { get; }
@@ -40,7 +35,6 @@
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
 
             NavigeteTo = new NavigateMainFieldCommand(_navigationStore);
-            SidePanelViewModel = new SidePanelViewModel(NavigeteTo);
         }
 
         /// <summary>

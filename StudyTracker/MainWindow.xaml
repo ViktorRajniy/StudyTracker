@@ -32,7 +32,7 @@
 			<RowDefinition	Height="auto"></RowDefinition>
 			<RowDefinition	></RowDefinition>
 		</Grid.RowDefinitions>
-		<view:Menu DataContext="{Binding SidePanelViewModel}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="2"/>
+		<view:Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="2"/>
 		<view:SidePanel Grid.Row="1" Grid.Column="0"/>
 		<ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding CurrentViewModel}"/>
 	</Grid>
