@@ -3,6 +3,7 @@
     using StudyTracker.Stores;
     using StudyTracker.ViewModel.Enums;
     using StudyTracker.ViewModel.ViewModels;
+    using System.Collections.ObjectModel;
 
     /// <summary>
     /// Command that change main field of window.
@@ -14,13 +15,16 @@
         /// </summary>
         private readonly NavigationStore _navigationStore;
 
+        private ObservableCollection<ExerciseViewModel> _exercises = new ObservableCollection<ExerciseViewModel>();
+
         /// <summary>
         /// Initiate the instance of <see cref="NavigateMainFieldCommand"/>.
         /// </summary>
         /// <param name="navigationStore">Store of navigation.</param>
-        public NavigateMainFieldCommand(NavigationStore navigationStore)
+        public NavigateMainFieldCommand(NavigationStore navigationStore, ObservableCollection<ExerciseViewModel> exercises)
         {
             _navigationStore = navigationStore;
+            _exercises = exercises;
         }
 
         /// <summary>
@@ -45,7 +49,7 @@
                         }
                     case MainFieldType.Backlog:
                         {
-                            _navigationStore.CurrentViewModel = new BacklogViewModel();
+                            _navigationStore.CurrentViewModel = new BacklogViewModel(_exercises);
                             break;
                         }
                 }
