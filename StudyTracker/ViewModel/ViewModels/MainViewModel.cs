@@ -3,6 +3,7 @@
     using StudyTracker.Stores;
     using StudyTracker.ViewModel.Commands;
     using StudyTracker.ViewModel.MVVM;
+    using System.Collections.ObjectModel;
     using System.Windows.Input;
 
     /// <summary>
@@ -26,15 +27,20 @@
         public ICommand NavigeteTo { get; }
 
         /// <summary>
+        /// Data of user exercises.
+        /// </summary>
+        private ObservableCollection<ExerciseViewModel> _exercises = new ObservableCollection<ExerciseViewModel>();
+
+        /// <summary>
         /// Initialise instance of <see cref="MainViewModel"/>.
         /// </summary>
         /// <param name="navigationStore">Navigation store.</param>
-        public MainViewModel(NavigationStore navigationStore)
+        public MainViewModel(NavigationStore navigationStore, ObservableCollection<ExerciseViewModel> exercises)
         {
             _navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
-
-            NavigeteTo = new NavigateMainFieldCommand(_navigationStore);
+            _exercises = exercises;
+            NavigeteTo = new NavigateMainFieldCommand(_navigationStore, _exercises);
         }
 
         /// <summary>

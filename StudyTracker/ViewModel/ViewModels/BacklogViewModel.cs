@@ -1,7 +1,9 @@
 ﻿namespace StudyTracker.ViewModel.ViewModels
 {
+    using StudyTracker.ViewModel.Commands;
     using StudyTracker.ViewModel.MVVM;
     using System.Collections.ObjectModel;
+    using System.Windows.Input;
 
     /// <summary>
     /// Data context of list of all user exercises.
@@ -11,7 +13,7 @@
         /// <summary>
         /// Collection of all exercises.
         /// </summary>
-        private ObservableCollection<ExerciseViewModel> _exercises = null;
+        private ObservableCollection<ExerciseViewModel> _exercises = new ObservableCollection<ExerciseViewModel>();
         public ObservableCollection<ExerciseViewModel> Exercises
         {
             get { return _exercises; }
@@ -19,32 +21,17 @@
         }
 
         /// <summary>
-        /// Initialise instance of <see cref="BacklogViewModel"/>.
+        /// Command to add exercise.
         /// </summary>
-        public BacklogViewModel()
-        {
-            GetTestValue();
-        }
+        public ICommand AddExercise { get; }
 
         /// <summary>
-        /// TODO: -- DELETE --
+        /// Initialise instance of <see cref="BacklogViewModel"/>.
         /// </summary>
-        private void GetTestValue()
+        public BacklogViewModel(ObservableCollection<ExerciseViewModel> exercises)
         {
-            _exercises = new ObservableCollection<ExerciseViewModel> {
-                new ExerciseViewModel { Name="lab1"},
-                new ExerciseViewModel
-                { 
-                    Name="lab2-5",
-                    Children = new ObservableCollection<ExerciseViewModel>
-                    {
-                        new ExerciseViewModel { Name="lab2"},
-                        new ExerciseViewModel { Name="lab3"},
-                        new ExerciseViewModel { Name="lab4"},
-                        new ExerciseViewModel { Name="lab5"}
-                    } 
-                }
-            };
+            Exercises = exercises; 
+            AddExercise = new AddExerciseCommand(exercises);
         }
     }
 }

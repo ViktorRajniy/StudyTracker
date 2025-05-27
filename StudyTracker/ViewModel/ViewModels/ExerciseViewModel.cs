@@ -7,7 +7,7 @@
     /// <summary>
     /// View model of exercise.
     /// </summary>
-    class ExerciseViewModel: ViewModelBase
+    public class ExerciseViewModel: ViewModelBase
     {
         /// <summary>
         /// Name of exercise.
