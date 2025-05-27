@@ -8,7 +8,7 @@
     /// <summary>
     /// Data context of main window.
     /// </summary>
-    class MainViewModel: ViewModelBase
+    class MainViewModel: BaseWindowViewModel<MainWindow>
     {
         /// <summary>
         /// Navigation store.
