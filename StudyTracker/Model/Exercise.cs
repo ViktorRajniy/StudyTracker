@@ -3,7 +3,7 @@
     /// <summary>
     /// Exercise that user want to do.
     /// </summary>
-    class Exercise
+    public class Exercise
     {
         /// <summary>
         /// Name of exercise.
