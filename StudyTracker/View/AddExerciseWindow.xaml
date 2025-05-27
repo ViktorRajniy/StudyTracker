@@ -1,14 +1,19 @@
-﻿<Window x:Class="StudyTracker.View.AddExercise"
+﻿<Window x:Class="StudyTracker.View.AddExerciseWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudyTracker.View"
+		xmlns:vms="clr-namespace:StudyTracker.ViewModel.ViewModels" 
+		d:DataContext="{d:DesignInstance Type=vms:AddExerciseWindowViewModel}"
         mc:Ignorable="d"
         Title="Add your exercise" Height="450" Width="800">
     <Grid>
 		<StackPanel>
-			<TextBlock></TextBlock>
+			<TextBox Text="{Binding Exercise.Name}"></TextBox>
+			<TextBox Text="{Binding Exercise.Description}"></TextBox>
+			<Button Command="{Binding ApplyCommand}">Add</Button>
+			<Button Command="{Binding CancelCommand}">Cancel</Button>
 		</StackPanel>
     </Grid>
 </Window>
