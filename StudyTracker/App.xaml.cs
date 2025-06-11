@@ -54,10 +54,10 @@
                     Name="lab2-5",
                     Children = new ObservableCollection<ExerciseViewModel>
                     {
-                        new ExerciseViewModel { Name="lab2"},
-                        new ExerciseViewModel { Name="lab3"},
-                        new ExerciseViewModel { Name="lab4"},
-                        new ExerciseViewModel { Name="lab5"}
+                        new ExerciseViewModel { Name="lab2", Description="ujbaf"},
+                        new ExerciseViewModel { Name="lab3", Description="ujbafujbafujbaf"},
+                        new ExerciseViewModel { Name="lab4", Description="ujbafujbaf"},
+                        new ExerciseViewModel { Name="lab5", Description="ujbafujbafujbafujbafujbafujbafujbafujbafujbafujbaf"}
                     }
                 }
             };

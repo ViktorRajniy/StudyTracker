@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudyTracker" 
 		xmlns:view="clr-namespace:StudyTracker.View"
-		xmlns:vms="clr-namespace:StudyTracker.ViewModel.ViewModels" 
+		xmlns:vms="clr-namespace:StudyTracker.ViewModel.ViewModels"
+		xmlns:ui="http://schemas.modernwpf.com/2019"
+		ui:WindowHelper.UseModernWindowStyle="True"
 		d:DataContext="{d:DesignInstance Type=vms:MainViewModel}"
 		mc:Ignorable="d"
         Title="StudyTracker" Height="450" Width="800">

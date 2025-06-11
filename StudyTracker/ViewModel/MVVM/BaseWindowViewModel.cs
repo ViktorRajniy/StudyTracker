@@ -3,7 +3,7 @@
     using System.Windows;
     using System.Windows.Input;
 
-    class BaseWindowViewModel<T>: ViewModelBase
+    public class BaseWindowViewModel<T>: ViewModelBase
         where T : Window, new()
     {
         private Window _view;
