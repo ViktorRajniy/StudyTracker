@@ -1,6 +1,7 @@
 ﻿namespace StudyTracker
 {
     using StudyTracker.Stores;
+    using StudyTracker.ViewModel.MVVM;
     using StudyTracker.ViewModel.ViewModels;
     using System.Collections.ObjectModel;
     using System.Windows;
@@ -48,18 +49,18 @@
         private void GetTestValue()
         {   
             _exercises = new ObservableCollection<ExerciseViewModel> {
-                new ExerciseViewModel { Name="lab1"},
+                new ExerciseViewModel("lab1"),
                 new ExerciseViewModel
-                {
-                    Name="lab2-5",
-                    Children = new ObservableCollection<ExerciseViewModel>
+                (
+                    "lab2-5", "", null,
+                    new ObservableCollection<ExerciseViewModel>
                     {
-                        new ExerciseViewModel { Name="lab2", Description="ujbaf"},
-                        new ExerciseViewModel { Name="lab3", Description="ujbafujbafujbaf"},
-                        new ExerciseViewModel { Name="lab4", Description="ujbafujbaf"},
-                        new ExerciseViewModel { Name="lab5", Description="ujbafujbafujbafujbafujbafujbafujbafujbafujbafujbaf"}
+                        new ExerciseViewModel ("lab2", "ujbaf"),
+                        new ExerciseViewModel ("lab2", "ujbafujbafujbaf"),
+                        new ExerciseViewModel ("lab4", "ujbafujbaf"),
+                        new ExerciseViewModel ("lab5", "ujbafujbafujbafujbafujbafujbafujbafujbafujbafujbaf")
                     }
-                }
+                )
             };
         }
     }

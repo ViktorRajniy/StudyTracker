@@ -13,7 +13,7 @@
         /// <summary>
         /// Collection of all exercises.
         /// </summary>
-        private ObservableCollection<ExerciseViewModel> _exercises = new ObservableCollection<ExerciseViewModel>();
+        private ObservableCollection<ExerciseViewModel> _exercises = new();
         public ObservableCollection<ExerciseViewModel> Exercises
         {
             get { return _exercises; }
@@ -26,12 +26,18 @@
         public ICommand AddExercise { get; }
 
         /// <summary>
+        /// Command to edit exercise.
+        /// </summary>
+        public ICommand EditExercise { get; }
+
+        /// <summary>
         /// Initialise instance of <see cref="BacklogViewModel"/>.
         /// </summary>
         public BacklogViewModel(ObservableCollection<ExerciseViewModel> exercises)
         {
             Exercises = exercises; 
             AddExercise = new AddExerciseCommand(exercises);
+            EditExercise = new EditExerciseCommand(exercises);
         }
     }
 }

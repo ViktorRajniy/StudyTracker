@@ -29,7 +29,7 @@
         /// <summary>
         /// Data of user exercises.
         /// </summary>
-        private ObservableCollection<ExerciseViewModel> _exercises = new ObservableCollection<ExerciseViewModel>();
+        private ObservableCollection<ExerciseViewModel> _exercises = new ObservableCollection   <ExerciseViewModel>();
 
         /// <summary>
         /// Initialise instance of <see cref="MainViewModel"/>.

@@ -1,5 +1,6 @@
 ﻿namespace StudyTracker.ViewModel.Commands
 {
+    using System.ComponentModel;
     using System.Windows.Input;
 
     /// <summary>

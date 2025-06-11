@@ -1,18 +1,16 @@
-﻿namespace StudyTracker.ViewModel.Commands
-{
-    using StudyTracker.Model;
-    using StudyTracker.ViewModel.ViewModels;
-    using System.Collections.ObjectModel;
+﻿using StudyTracker.ViewModel.MVVM;
+using StudyTracker.ViewModel.ViewModels;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
-    /// <summary>
-    /// Add exercise to collection of exercises.
-    /// </summary>
-    class AddExerciseCommand : CommandBase
+namespace StudyTracker.ViewModel.Commands
+{
+    class EditExerciseCommand: CommandBase
     {
         /// <summary>
         /// Instance of user exercises.
         /// </summary>
-        private ObservableCollection<ExerciseViewModel> _exercises = new ObservableCollection<ExerciseViewModel>();
+        private ObservableCollection<ExerciseViewModel> _exercises = new();
         public ObservableCollection<ExerciseViewModel> Exercises
         {
             get { return _exercises; }
@@ -23,7 +21,7 @@
         /// Initialise instancec of command.
         /// </summary>
         /// <param name="exercises">Data of user exercises.</param>
-        public AddExerciseCommand(ObservableCollection<ExerciseViewModel> exercises)
+        public EditExerciseCommand(ObservableCollection<ExerciseViewModel> exercises)
         {
             Exercises = exercises;
         }
@@ -34,25 +32,16 @@
         /// <param name="parameter">Command parameter.</param>
         public override void Execute(object? parameter)
         {
-            AddExerciseWindowViewModel win;
             if (parameter != null || parameter is ExerciseViewModel)
             {
                 var param = (ExerciseViewModel)parameter;
-                win = new AddExerciseWindowViewModel();
+                var win = new EditExerciseWindowViewModel(param);
                 win.ShowDialog();
                 if (win.View.DialogResult.Value)
                 {
-                    param.Children.Add(win.Exercise);
-                }
-            }
-            else
-            {
-                win = new AddExerciseWindowViewModel();
-                win.ShowDialog();
-                if (win.View.DialogResult.Value)
-                {
-                    Exercises.Add(win.Exercise);
-                }
+                    var oldExercise = Exercises.FirstOrDefault(e => e.Key == win.Exercise.Key);
+                    oldExercise = win.Exercise;
+                }                
             }
         }
     }

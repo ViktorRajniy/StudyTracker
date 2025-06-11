@@ -11,7 +11,7 @@
         /// <summary>
         /// Data of exercise that creating.
         /// </summary>
-        private ExerciseViewModel _exercise = new();
+        private ExerciseViewModel _exercise = new("New laboratory work");
         public ExerciseViewModel Exercise
         {
             get { return _exercise; }

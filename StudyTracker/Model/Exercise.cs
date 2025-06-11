@@ -5,14 +5,17 @@
     /// </summary>
     public class Exercise
     {
+        private int _key;
+        public int Key { get; }
+
         /// <summary>
         /// Name of exercise.
         /// </summary>
-        private string _name = string.Empty;
-        public string Name
+        private string _title = string.Empty;
+        public string Title
         {
-            get { return _name; }
-            set { _name = value; }
+            get { return _title; }
+            set { _title = value; }
         }
 
         /// <summary>
@@ -43,6 +46,23 @@
         {
             get { return _children; }
             set { _children = value; }
+        }
+
+        public Exercise(string title, string description = null, Exercise parent = null, List<Exercise> exercises = null)
+        {
+            _key = title.GetHashCode();
+            Title = title;
+            Description = description;
+            Parent = parent;
+            Children = exercises;
+        }
+
+        public void Copy(Exercise newExercise)
+        {
+            Title = newExercise.Title;
+            Description = newExercise.Description;
+            Parent = newExercise.Parent;
+            Children = newExercise.Children;
         }
     }
 }
