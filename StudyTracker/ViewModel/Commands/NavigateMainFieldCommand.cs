@@ -39,7 +39,7 @@
                 {
                     case MainFieldType.Calendar:
                         {
-                            _navigationStore.CurrentViewModel = new CalendarViewModel();
+                            _navigationStore.CurrentViewModel = new CalendarViewModel(_exercises);
                             break;
                         }
                     case MainFieldType.GantDiagram:

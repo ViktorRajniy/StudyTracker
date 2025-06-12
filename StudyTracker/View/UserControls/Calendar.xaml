@@ -6,12 +6,11 @@
              xmlns:local="clr-namespace:StudyTracker.View"
              mc:Ignorable="d" 
 			 xmlns:vms="clr-namespace:StudyTracker.ViewModel.ViewModels" 
-			 d:DataContext="{d:DesignInstance Type=vms:CalendarViewModel}"			 
-             d:DesignHeight="450" d:DesignWidth="800">
-	<Grid>
-		<StackPanel>
-			<DatePicker/>
-			
-		</StackPanel>
-	</Grid>
+			 xmlns:uc="clr-namespace:StudyTracker.View.UserControls" 
+			 d:DataContext="{d:DesignInstance Type=vms:CalendarViewModel}"
+			 Loaded="UserControl_Loaded">
+	
+	<ScrollViewer VerticalScrollBarVisibility="Hidden">
+		<WrapPanel Name="CalendarWrapPanel" HorizontalAlignment="Left"/>
+	</ScrollViewer>
 </UserControl>

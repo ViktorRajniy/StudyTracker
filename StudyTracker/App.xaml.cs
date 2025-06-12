@@ -36,7 +36,7 @@
         protected override void OnStartup(StartupEventArgs e)
         {
             GetTestValue();
-            _navigationStore.CurrentViewModel = new CalendarViewModel();
+            _navigationStore.CurrentViewModel = new CalendarViewModel(_exercises);
             var MainWindow = new MainViewModel(_navigationStore, _exercises);
             MainWindow.View.Show();
 

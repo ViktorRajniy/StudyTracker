@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="StudyTracker.View.UserControls.MyCalendarItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StudyTracker.View.UserControls"
+			 d:DataContext="{d:DesignInstance Type=local:MyCalendarItem}"
+             mc:Ignorable="d" 
+             d:DesignHeight="90" d:DesignWidth="120"
+			 MinHeight="90" MinWidth="160"
+			 MaxHeight="200" MaxWidth="300"
+			 Margin="3" Height="auto">
+	
+	<Grid Height="auto">
+		<Border CornerRadius="10 0 10 0" BorderBrush="LightGray" BorderThickness="2">
+			<ScrollViewer VerticalScrollBarVisibility="Hidden">
+				<StackPanel>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock x:Name="DayTextBlock" Margin="5 3" FontSize="16" Text="{Binding Day}"/>
+						<TextBlock x:Name="MonthTextBlock" Margin="5 3" FontSize="16" Text="{Binding Month}"/>
+					</StackPanel>
+					<ListBox x:Name="ExercisesListBox" ItemsSource="{Binding Exercises}" Background="Transparent">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<Border Background="Transparent" CornerRadius="6" BorderBrush="LightGray" BorderThickness="1">
+									<StackPanel>
+										<TextBlock Margin="3" Name="TitleText" FontSize="16" Text="{Binding Path=Title}"/>
+										<TextBlock Margin="3" Name="DeadlineText" FontSize="12" Text="{Binding Path=Deadline}"/>
+									</StackPanel>
+								</Border>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</StackPanel>
+			</ScrollViewer>
+		</Border>
+	</Grid>
+</UserControl>

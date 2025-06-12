@@ -10,7 +10,10 @@
 		ui:WindowHelper.UseModernWindowStyle="True"
 		d:DataContext="{d:DesignInstance Type=vms:MainViewModel}"
 		mc:Ignorable="d"
-        Title="StudyTracker" Height="450" Width="800">
+        Title="StudyTracker" 
+		MinHeight="450" MinWidth="800"
+		Height="500" Width="1000"
+		MaxHeight="600" MaxWidth="1300">
 	<Grid>
 
 		<Grid.Resources>
@@ -27,15 +30,19 @@
 		
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="70"></ColumnDefinition>
-			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition Width="auto"></ColumnDefinition>
+			<ColumnDefinition Width="*"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
 
 		<Grid.RowDefinitions>
-			<RowDefinition	Height="auto"></RowDefinition>
-			<RowDefinition	></RowDefinition>
+			<RowDefinition Height="auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
 		</Grid.RowDefinitions>
+		
 		<view:Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="2"/>
-		<view:SidePanel Grid.Row="1" Grid.Column="0"/>
-		<ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding CurrentViewModel}"/>
+		<GridSplitter Grid.Row="1" ShowsPreview="False" Width="1"/>
+		<view:SidePanel Grid.Row="2" Grid.Column="0"/>
+		<ContentControl Grid.Row="1" Grid.Column="2" 
+						Content="{Binding CurrentViewModel}"/>
 	</Grid>
 </Window>
