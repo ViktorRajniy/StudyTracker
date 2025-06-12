@@ -9,9 +9,6 @@
     /// </summary>
     public class ExerciseViewModel : ViewModelBase
     {
-        private int _key;
-        public int Key { get; }
-
         /// <summary>
         /// Name of exercise.
         /// </summary>
@@ -30,6 +27,19 @@
         {
             get { return _description; }
             set { _description = value; }
+        }
+
+        private DateTime _creationTime = DateTime.Now;
+        public DateTime CreationTime
+        {
+            get { return _creationTime; }
+        }
+
+        private DateTime _deadline = DateTime.Now;
+        public DateTime Deadline
+        {
+            get { return _deadline; }
+            set { _deadline = value; }
         }
 
         /// <summary>
@@ -54,17 +64,19 @@
 
         public ExerciseViewModel(
                                 string title,
+                                DateTime deadline,
                                 string description = null,
-                                ExerciseViewModel parent = null,
-                                ObservableCollection<ExerciseViewModel> exercises = null)
+                                ExerciseViewModel? parent = null,
+                                ObservableCollection<ExerciseViewModel>? exercises = null)
         {
-            _key = title.GetHashCode();
+            _creationTime = DateTime.Now;
+            Deadline = deadline;
             Title = title;
             Description = description;
             Parent = parent;
             if (exercises == null)
             {
-                Children = new ObservableCollection<ExerciseViewModel>();
+                Children = [];
             }
             else
             {
@@ -72,11 +84,9 @@
             }
         }
 
-        public void Copy(ExerciseViewModel newExercise)
+        public string GetBacklogDeadline()
         {
-            Title = newExercise.Title;
-            Description = newExercise.Description;
-            OnPropertyChanged(nameof(ExerciseViewModel));
+            return "Deadline: " + DateOnly.FromDateTime(Deadline);
         }
     }
 }

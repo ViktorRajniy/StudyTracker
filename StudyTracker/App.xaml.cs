@@ -49,16 +49,16 @@
         private void GetTestValue()
         {   
             _exercises = new ObservableCollection<ExerciseViewModel> {
-                new ExerciseViewModel("lab1"),
+                new ExerciseViewModel("lab1", DateTime.Now.AddDays(-5)),
                 new ExerciseViewModel
                 (
-                    "lab2-5", "", null,
+                    "lab2-5", DateTime.Now.AddDays(-4), "", null,
                     new ObservableCollection<ExerciseViewModel>
                     {
-                        new ExerciseViewModel ("lab2", "ujbaf"),
-                        new ExerciseViewModel ("lab2", "ujbafujbafujbaf"),
-                        new ExerciseViewModel ("lab4", "ujbafujbaf"),
-                        new ExerciseViewModel ("lab5", "ujbafujbafujbafujbafujbafujbafujbafujbafujbafujbaf")
+                        new ExerciseViewModel ("lab2",DateTime.Now.AddDays(-3), "ujbaf"),
+                        new ExerciseViewModel ("lab2",DateTime.Now.AddDays(-2), "ujbafujbafujbaf"),
+                        new ExerciseViewModel ("lab4",DateTime.Now.AddDays(-1), "ujbafujbaf"),
+                        new ExerciseViewModel ("lab5",DateTime.Now, "ujbafujbafujbafujbafujbafujbafujbafujbafujbafujbaf")
                     }
                 )
             };

@@ -23,13 +23,16 @@
 			<TreeView.ItemTemplate>
 				<HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
 
-					<StackPanel Orientation="Horizontal" Background="Green" Width="auto">
+					<StackPanel Orientation="Horizontal" Width="auto">
 
 						<StackPanel DockPanel.Dock="Left">
-							<TextBlock x:Name="Title" Text="{Binding Title}"/>
-							<TextBlock Text="{Binding Description}"/>
+							<TextBlock FontSize="16" Margin="4" Text="{Binding Title}"/>
+							<TextBlock FontSize="12" Margin="2" Text="{Binding Description}"/>
+							<StackPanel Orientation="Horizontal">
+								<Label FontSize="12" Margin="0 2" Content="Deadline: "/>
+								<Label FontSize="12" Margin="0 2" Content="{Binding Deadline}"/>
+							</StackPanel>
 						</StackPanel>
-						<Button DockPanel.Dock="Right" Margin="5">+</Button>
 
 					</StackPanel>
 				</HierarchicalDataTemplate>
@@ -38,7 +41,6 @@
 		<StackPanel Grid.Row="1" Orientation="Horizontal" >
 			<Button  Margin="5" Command="{Binding AddExercise}" CommandParameter="{Binding ElementName=BackList, Path=SelectedItem}">Add exercise</Button>
 			<Button  Margin="5" Command="{Binding EditExercise}" CommandParameter="{Binding ElementName=BackList, Path=SelectedItem}">Edit exercise</Button>
-		
 		</StackPanel>
 	</Grid>
 </UserControl>

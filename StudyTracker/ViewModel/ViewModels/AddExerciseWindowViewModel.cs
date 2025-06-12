@@ -11,7 +11,7 @@
         /// <summary>
         /// Data of exercise that creating.
         /// </summary>
-        private ExerciseViewModel _exercise = new("New laboratory work");
+        private ExerciseViewModel _exercise = new("New laboratory work", DateTime.Now);
         public ExerciseViewModel Exercise
         {
             get { return _exercise; }

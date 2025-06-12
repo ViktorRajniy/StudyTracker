@@ -12,8 +12,12 @@
         Title="Add your exercise" Height="450" Width="800">
     <Grid>
 		<StackPanel Margin="5">
+			<Label Margin="5" Content="Title of exercise:"/>
 			<TextBox Margin="5" Text="{Binding Exercise.Title}"></TextBox>
+			<Label Margin="5" Content="Description of exercise:"/>
 			<TextBox Margin="5" Text="{Binding Exercise.Description}"></TextBox>
+			<Label Margin="5" Content="Deadline of exercise:"/>
+			<DatePicker Margin="5" SelectedDate="{Binding Exercise.Deadline}"/>
 			<StackPanel Orientation="Horizontal">
 				<Button Margin="5" DockPanel.Dock="Left" Command="{Binding ApplyCommand}">Add</Button>
 				<Button Margin="5" DockPanel.Dock="Right" Command="{Binding CancelCommand}">Cancel</Button>

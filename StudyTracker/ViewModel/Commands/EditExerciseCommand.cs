@@ -39,8 +39,8 @@ namespace StudyTracker.ViewModel.Commands
                 win.ShowDialog();
                 if (win.View.DialogResult.Value)
                 {
-                    var oldExercise = Exercises.FirstOrDefault(e => e.Key == win.Exercise.Key);
-                    oldExercise.Copy(win.Exercise);
+                    var oldExercise = Exercises.FirstOrDefault(e => e.CreationTime == win.Exercise.CreationTime);
+                    oldExercise = win.Exercise;
                 }                
             }
         }
