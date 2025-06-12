@@ -4,24 +4,41 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StudyTracker.View"
+			 xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
 			 xmlns:vms="clr-namespace:StudyTracker.ViewModel.ViewModels" 
 			 d:DataContext="{d:DesignInstance Type=vms:BacklogViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
 	<Grid>
-		<StackPanel>
-			<TreeView x:Name="BackList" ItemsSource="{Binding Exercises}" >
-				<TreeView.ItemTemplate>
-					<HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
-						<StackPanel>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="50"></RowDefinition>
+		</Grid.RowDefinitions>
+
+		<TreeView Grid.Row="0" x:Name="BackList" ItemsSource="{Binding Exercises}" 
+				  Padding="5" MouseDoubleClick="BackList_MouseDoubleClick_1">
+
+
+			<TreeView.ItemTemplate>
+				<HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
+
+					<StackPanel Orientation="Horizontal" Background="Green" Width="auto">
+
+						<StackPanel DockPanel.Dock="Left">
 							<TextBlock x:Name="Title" Text="{Binding Title}"/>
 							<TextBlock Text="{Binding Description}"/>
 						</StackPanel>
-					</HierarchicalDataTemplate>
-				</TreeView.ItemTemplate>
-			</TreeView>
-			<Button Command="{Binding AddExercise}" CommandParameter="{Binding ElementName=BackList, Path=SelectedItem}">Add exercise</Button>
-			<Button Command="{Binding EditExercise}" CommandParameter="{Binding ElementName=BackList, Path=SelectedItem}">Edit exercise</Button>
+						<Button DockPanel.Dock="Right" Margin="5">+</Button>
+
+					</StackPanel>
+				</HierarchicalDataTemplate>
+			</TreeView.ItemTemplate>
+		</TreeView>
+		<StackPanel Grid.Row="1" Orientation="Horizontal" >
+			<Button  Margin="5" Command="{Binding AddExercise}" CommandParameter="{Binding ElementName=BackList, Path=SelectedItem}">Add exercise</Button>
+			<Button  Margin="5" Command="{Binding EditExercise}" CommandParameter="{Binding ElementName=BackList, Path=SelectedItem}">Edit exercise</Button>
+		
 		</StackPanel>
 	</Grid>
 </UserControl>

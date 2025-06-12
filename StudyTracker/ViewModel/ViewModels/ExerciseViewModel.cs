@@ -53,10 +53,10 @@
         }
 
         public ExerciseViewModel(
-            string title,
-            string description = null,
-            ExerciseViewModel parent = null,
-            ObservableCollection<ExerciseViewModel> exercises = null)
+                                string title,
+                                string description = null,
+                                ExerciseViewModel parent = null,
+                                ObservableCollection<ExerciseViewModel> exercises = null)
         {
             _key = title.GetHashCode();
             Title = title;
@@ -70,6 +70,13 @@
             {
                 Children = exercises;
             }
+        }
+
+        public void Copy(ExerciseViewModel newExercise)
+        {
+            Title = newExercise.Title;
+            Description = newExercise.Description;
+            OnPropertyChanged(nameof(ExerciseViewModel));
         }
     }
 }

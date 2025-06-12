@@ -24,5 +24,24 @@ namespace StudyTracker.View
         {
             InitializeComponent();
         }
+
+        private void BackList_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
+        {
+            ClearTreeViewItemsControlSelection(BackList.Items, BackList.ItemContainerGenerator);
+        }
+
+        private static void ClearTreeViewItemsControlSelection(ItemCollection ic, ItemContainerGenerator icg)
+        {
+            if ((ic != null) && (icg != null))
+                for (int i = 0; i < ic.Count; i++)
+                {
+                    TreeViewItem tvi = icg.ContainerFromIndex(i) as TreeViewItem;
+                    if (tvi != null)
+                    {
+                        ClearTreeViewItemsControlSelection(tvi.Items, tvi.ItemContainerGenerator);
+                        tvi.IsSelected = false;
+                    }
+                }
+        }
     }
 }

@@ -40,7 +40,7 @@ namespace StudyTracker.ViewModel.Commands
                 if (win.View.DialogResult.Value)
                 {
                     var oldExercise = Exercises.FirstOrDefault(e => e.Key == win.Exercise.Key);
-                    oldExercise = win.Exercise;
+                    oldExercise.Copy(win.Exercise);
                 }                
             }
         }
