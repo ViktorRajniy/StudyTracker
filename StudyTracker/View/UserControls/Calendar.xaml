@@ -10,7 +10,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
 	<Grid>
 		<StackPanel>
-			<TextBlock>Calendar</TextBlock>
+			<DatePicker/>
+			
 		</StackPanel>
 	</Grid>
 </UserControl>
