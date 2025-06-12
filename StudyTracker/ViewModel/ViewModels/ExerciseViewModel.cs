@@ -84,9 +84,10 @@
             }
         }
 
-        public string GetBacklogDeadline()
+        public void AddChild(ExerciseViewModel newChild)
         {
-            return "Deadline: " + DateOnly.FromDateTime(Deadline);
+            Children.Add(newChild);
+            Children.Last().Parent = this;
         }
     }
 }

@@ -31,6 +31,11 @@
         public ICommand EditExercise { get; }
 
         /// <summary>
+        /// Command to edit exercise.
+        /// </summary>
+        public ICommand DeleteExercise { get; }
+
+        /// <summary>
         /// Initialise instance of <see cref="BacklogViewModel"/>.
         /// </summary>
         public BacklogViewModel(ObservableCollection<ExerciseViewModel> exercises)
@@ -38,6 +43,7 @@
             Exercises = exercises; 
             AddExercise = new AddExerciseCommand(exercises);
             EditExercise = new EditExerciseCommand(exercises);
+            DeleteExercise = new DeleteExerciseCommand(exercises);
         }
     }
 }

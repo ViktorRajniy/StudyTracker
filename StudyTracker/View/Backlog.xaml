@@ -41,6 +41,7 @@
 		<StackPanel Grid.Row="1" Orientation="Horizontal" >
 			<Button  Margin="5" Command="{Binding AddExercise}" CommandParameter="{Binding ElementName=BackList, Path=SelectedItem}">Add exercise</Button>
 			<Button  Margin="5" Command="{Binding EditExercise}" CommandParameter="{Binding ElementName=BackList, Path=SelectedItem}">Edit exercise</Button>
+			<Button  Margin="5" Command="{Binding DeleteExercise}" CommandParameter="{Binding ElementName=BackList, Path=SelectedItem}">Delete exercise</Button>
 		</StackPanel>
 	</Grid>
 </UserControl>

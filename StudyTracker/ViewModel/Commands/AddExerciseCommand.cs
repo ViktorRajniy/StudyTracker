@@ -42,7 +42,9 @@
                 win.ShowDialog();
                 if (win.View.DialogResult.Value)
                 {
-                    param.Children.Add(win.Exercise);
+                    var newItem = win.Exercise;
+                    param.Children.Add(newItem);
+                    newItem.Parent = param;
                 }
             }
             else

@@ -47,21 +47,18 @@
         /// TODO: -- DELETE --
         /// </summary>
         private void GetTestValue()
-        {   
+        {
             _exercises = new ObservableCollection<ExerciseViewModel> {
                 new ExerciseViewModel("lab1", DateTime.Now.AddDays(-5)),
                 new ExerciseViewModel
                 (
-                    "lab2-5", DateTime.Now.AddDays(-4), "", null,
-                    new ObservableCollection<ExerciseViewModel>
-                    {
-                        new ExerciseViewModel ("lab2",DateTime.Now.AddDays(-3), "ujbaf"),
-                        new ExerciseViewModel ("lab2",DateTime.Now.AddDays(-2), "ujbafujbafujbaf"),
-                        new ExerciseViewModel ("lab4",DateTime.Now.AddDays(-1), "ujbafujbaf"),
-                        new ExerciseViewModel ("lab5",DateTime.Now, "ujbafujbafujbafujbafujbafujbafujbafujbafujbafujbaf")
-                    }
+                    "lab2-5", DateTime.Now.AddDays(-4)
                 )
             };
+            _exercises[_exercises.Count - 1].AddChild(new ExerciseViewModel("lab2", DateTime.Now.AddDays(-3), "ujbaf"));
+            _exercises[_exercises.Count - 1].AddChild(new ExerciseViewModel("lab3", DateTime.Now.AddDays(-2), "ujbafujbafujbaf"));
+            _exercises[_exercises.Count - 1].AddChild(new ExerciseViewModel("lab4", DateTime.Now.AddDays(-1), "ujbafujbaferwtghertgertg"));
+            _exercises[_exercises.Count - 1].AddChild(new ExerciseViewModel("lab5", DateTime.Now, "ujbafujbafujbafujbafujbafujbafujbafujbafujbafujbaf"));
         }
     }
 }
