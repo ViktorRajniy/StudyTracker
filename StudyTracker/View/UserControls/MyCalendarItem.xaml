@@ -11,26 +11,42 @@
              d:DesignHeight="90" d:DesignWidth="120"
 			 MinHeight="90" MinWidth="160"
 			 MaxHeight="200" MaxWidth="300"
-			 Height="auto" Margin="5">
+			 Height="auto">
 
 	<Border CornerRadius="10 0 10 0" BorderBrush="LightGray" BorderThickness="2">
-		<Grid Height="auto">
+		<Grid x:Name="MainGrid" Height="auto">
+
+			<!--Grid props-->
 			<Grid.RowDefinitions>
 				<RowDefinition Height="*"/>
 				<RowDefinition Height="auto"/>
 			</Grid.RowDefinitions>
+
 			<ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden">
 				<StackPanel>
+
+					<!--Date text-->
 					<StackPanel Orientation="Horizontal">
-						<TextBlock x:Name="DayTextBlock" Margin="5 3" FontSize="16" Text="{Binding Date.Day}"/>
+						<TextBlock x:Name="DayTextBlock" Margin="5 3" FontSize="16" Text="{Binding DateData.Date.Day}"/>
 						<TextBlock x:Name="MonthTextBlock" Margin="5 3" FontSize="16" Text="{Binding Month}"/>
 					</StackPanel>
-					<ListBox x:Name="ExercisesListBox" ItemsSource="{Binding Exercises}" Background="Transparent">
+
+					<ListBox x:Name="ExercisesListBox" ItemsSource="{Binding DateData.ExerciseList}" Background="Transparent">
+						<i:Interaction.Triggers>
+							<i:EventTrigger EventName="MouseDoubleClick">
+								<i:InvokeCommandAction Command="{Binding EditExercise}" CommandParameter="{Binding ElementName=ExercisesListBox, Path=SelectedItem}"/>
+							</i:EventTrigger>
+						</i:Interaction.Triggers>
+
+						<!--ListBox container style-->
 						<ListBox.ItemContainerStyle>
 							<Style TargetType="ListBoxItem">
 								<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+								<Setter Property="VerticalContentAlignment" Value="Stretch"/>
 							</Style>
 						</ListBox.ItemContainerStyle>
+
+						<!--Item template-->
 						<ListBox.ItemTemplate>
 							<DataTemplate>
 								<Border Background="Transparent" CornerRadius="6" BorderBrush="LightGray" BorderThickness="1">
@@ -40,9 +56,12 @@
 								</Border>
 							</DataTemplate>
 						</ListBox.ItemTemplate>
+
 					</ListBox>
 				</StackPanel>
 			</ScrollViewer>
+
+			<!--Button-->
 			<Button Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5" Command="{Binding AddExercise}" Content="+"/>
 		</Grid>
 	</Border>

@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace StudyTracker.ViewModel.ViewModels
 {
-    class MyCalendarItemViewModel: ViewModelBase
+    public class MyCalendarItemViewModel: ViewModelBase
     {
         private readonly Dictionary<int, string> _monthDictionary = new Dictionary<int, string>()
         {
@@ -27,14 +27,14 @@ namespace StudyTracker.ViewModel.ViewModels
             {12, "December"  },
         };
 
-        private DateOnly _date;
-        public DateOnly Date
+        private CalendarDates _dateData;
+        public CalendarDates DateData
         {
-            get { return _date; }
+            get { return _dateData; }
             set
             {
-                _date = value;
-                Month = _monthDictionary[_date.Month];
+                _dateData = value;
+                Month = _monthDictionary[_dateData.Date.Month];
             }
         }
 
@@ -48,16 +48,6 @@ namespace StudyTracker.ViewModel.ViewModels
             }
         }
 
-        private ObservableCollection<ExerciseViewModel> _exersices = [];
-        public ObservableCollection<ExerciseViewModel> Exercises
-        {
-            get { return _exersices; }
-            set
-            {
-                _exersices = value;
-            }
-        }
-
         /// <summary>
         /// Command to add exercise.
         /// </summary>
@@ -68,8 +58,9 @@ namespace StudyTracker.ViewModel.ViewModels
         /// </summary>
         public ICommand EditExercise { get; }
 
-        public MyCalendarItemViewModel(ICommand add, ICommand edit)
+        public MyCalendarItemViewModel(ICommand add, ICommand edit, CalendarDates dateData)
         {
+            DateData = dateData;
             AddExercise = add;
             EditExercise = edit;
         }

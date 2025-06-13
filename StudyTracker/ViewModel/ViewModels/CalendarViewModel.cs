@@ -2,6 +2,7 @@
 {
     using StudyTracker.ViewModel.Commands;
     using StudyTracker.ViewModel.MVVM;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Windows;
     using System.Windows.Input;
@@ -19,6 +20,27 @@
             {
                 _exercises = value;
                 UpdateExerciseList();
+                UpdateDaysViewModels();
+            }
+        }
+
+        private List<ExerciseViewModel> _exerciseList = [];
+        public List<ExerciseViewModel> ExerciseList
+        {
+            get { return _exerciseList; }
+            set
+            {
+                _exerciseList = value;
+            }
+        }
+
+        private ObservableCollection<MyCalendarItemViewModel> _daysViewModels = [];
+        public ObservableCollection<MyCalendarItemViewModel> DaysViewModels
+        {
+            get { return _daysViewModels; }
+            set
+            {
+                _daysViewModels = value;
             }
         }
 
@@ -32,21 +54,19 @@
         /// </summary>
         public ICommand EditExercise { get; }
 
-        private List<ExerciseViewModel> _exerciseList = [];
-
         /// <summary>
         /// Initialise instance of <see cref="CalendarViewModel"/>.
         /// </summary>
         public CalendarViewModel(ObservableCollection<ExerciseViewModel> exercises)
         {
-            Exercises = exercises;
             AddExercise = new AddExerciseCommand(exercises);
             EditExercise = new EditExerciseCommand(exercises);
+            Exercises = exercises;
         }
 
-        public ObservableCollection<ExerciseViewModel> FindExerciseToDate(DateTime time)
+        public ObservableCollection<ExerciseViewModel> FindExerciseToDate(DateOnly time)
         {
-            var finded = _exerciseList.FindAll(e => DateOnly.FromDateTime(e.Deadline) == DateOnly.FromDateTime(time));
+            var finded = _exerciseList.FindAll(e => DateOnly.FromDateTime(e.Deadline) == time);
             var result = new ObservableCollection<ExerciseViewModel>();
             foreach (var k in finded)
             {
@@ -55,6 +75,16 @@
             return result;
         }
 
+        private void UpdateDaysViewModels()
+        {
+            for (int i = 0; i < 31; i++)
+            {
+                var newDate = DateOnly.FromDateTime(DateTime.Today.AddDays(-15 + i));
+                DaysViewModels.Add(new MyCalendarItemViewModel(AddExercise, EditExercise,
+                                                               new CalendarDates(newDate)));
+                DaysViewModels.Last().DateData.ExerciseList = FindExerciseToDate(newDate).ToList();
+            }
+        }
         private void UpdateExerciseList()
         {
             foreach (var exercise in Exercises)
@@ -69,7 +99,6 @@
                 }
             }
         }
-
         private List<ExerciseViewModel> GetExerciseChildren(ExerciseViewModel exercise)
         {
             List<ExerciseViewModel> list = [];

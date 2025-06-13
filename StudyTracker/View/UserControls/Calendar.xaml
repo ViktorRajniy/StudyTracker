@@ -7,10 +7,22 @@
              mc:Ignorable="d" 
 			 xmlns:vms="clr-namespace:StudyTracker.ViewModel.ViewModels" 
 			 xmlns:uc="clr-namespace:StudyTracker.View.UserControls" 
-			 d:DataContext="{d:DesignInstance Type=vms:CalendarViewModel}"
-			 Loaded="UserControl_Loaded">
-	
-	<ScrollViewer VerticalScrollBarVisibility="Hidden">
-		<WrapPanel Name="CalendarWrapPanel" HorizontalAlignment="Left"/>
-	</ScrollViewer>
+			 d:DataContext="{d:DesignInstance Type=vms:CalendarViewModel}">
+
+	<ListView ItemsSource="{Binding DaysViewModels}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+		
+		<!--ListView resourses. Make ViewModel to View-->
+		<ListView.Resources>
+			<DataTemplate DataType="{x:Type vms:MyCalendarItemViewModel}">
+				<uc:MyCalendarItem Margin="3"/>
+			</DataTemplate>
+		</ListView.Resources>
+
+		<!--Item template-->
+		<ListView.ItemsPanel>
+			<ItemsPanelTemplate>
+				<WrapPanel IsItemsHost="True" Margin="5"/>
+			</ItemsPanelTemplate>
+		</ListView.ItemsPanel>
+	</ListView>
 </UserControl>
