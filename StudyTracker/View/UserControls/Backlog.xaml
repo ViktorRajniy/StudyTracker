@@ -11,7 +11,7 @@
 			 d:DataContext="{d:DesignInstance Type=vms:BacklogViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
 	<Grid>
-
+		<!--Gird props-->
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"></RowDefinition>
 			<RowDefinition Height="50"></RowDefinition>
@@ -20,9 +20,9 @@
 		<TreeView Grid.Row="0" x:Name="BackList" ItemsSource="{Binding Exercises}" 
 				  Padding="5" MouseDoubleClick="BackList_MouseDoubleClick_1">
 
+			<!--TreeView hierarchical template-->
 			<TreeView.ItemTemplate>
 				<HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
-
 					<StackPanel>
 						<TextBlock FontSize="16" Margin="4" Text="{Binding Title}"/>
 						<TextBlock FontSize="12" Margin="2" Text="{Binding Description}"/>
@@ -31,10 +31,11 @@
 							<Label FontSize="12" Margin="0 2" Content="{Binding Deadline}"/>
 						</StackPanel>
 					</StackPanel>
-
 				</HierarchicalDataTemplate>
 			</TreeView.ItemTemplate>
 		</TreeView>
+		
+		<!--Buttons panel-->
 		<StackPanel Grid.Row="1" Orientation="Horizontal" >
 			<Button  Margin="5" Command="{Binding AddExercise}" CommandParameter="{Binding ElementName=BackList, Path=SelectedItem}">Add exercise</Button>
 			<Button  Margin="5" Command="{Binding EditExercise}" CommandParameter="{Binding ElementName=BackList, Path=SelectedItem}">Edit exercise</Button>

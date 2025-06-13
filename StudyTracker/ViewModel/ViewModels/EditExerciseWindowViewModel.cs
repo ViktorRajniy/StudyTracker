@@ -1,8 +1,11 @@
-﻿using StudyTracker.View;
-using StudyTracker.ViewModel.MVVM;
-
-namespace StudyTracker.ViewModel.ViewModels
+﻿namespace StudyTracker.ViewModel.ViewModels
 {
+    using StudyTracker.View;
+    using StudyTracker.ViewModel.MVVM;
+
+    /// <summary>
+    /// View model of Edit exercise window.
+    /// </summary>
     public class EditExerciseWindowViewModel : BaseWindowViewModel<EditExerciseWindow>
     {
         /// <summary>
@@ -15,6 +18,10 @@ namespace StudyTracker.ViewModel.ViewModels
             set { _exercise = value; OnPropertyChanged(nameof(Exercise)); }
         }
 
+        /// <summary>
+        /// Initialise instance of class.
+        /// </summary>
+        /// <param name="exercise">Instancec of exercise.</param>
         public EditExerciseWindowViewModel(ExerciseViewModel exercise)
         {
             Exercise = exercise;

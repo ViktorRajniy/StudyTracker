@@ -1,11 +1,12 @@
-﻿using StudyTracker.ViewModel.MVVM;
-using StudyTracker.ViewModel.ViewModels;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-
-namespace StudyTracker.ViewModel.Commands
+﻿namespace StudyTracker.ViewModel.Commands
 {
-    class EditExerciseCommand: CommandBase
+    using StudyTracker.ViewModel.ViewModels;
+    using System.Collections.ObjectModel;
+
+    /// <summary>
+    /// Edit exercise in collection of exercises.
+    /// </summary>
+    class EditExerciseCommand : CommandBase
     {
         /// <summary>
         /// Instance of user exercises.
@@ -18,7 +19,7 @@ namespace StudyTracker.ViewModel.Commands
         }
 
         /// <summary>
-        /// Initialise instancec of command.
+        /// Initialise instance of command.
         /// </summary>
         /// <param name="exercises">Data of user exercises.</param>
         public EditExerciseCommand(ObservableCollection<ExerciseViewModel> exercises)
@@ -27,9 +28,9 @@ namespace StudyTracker.ViewModel.Commands
         }
 
         /// <summary>
-        /// Command action. Open AddExercise window and add exercise.
+        /// Command action. Open EditExercise window and edit exercise in collection.
         /// </summary>
-        /// <param name="parameter">Command parameter.</param>
+        /// <param name="parameter">Exercise to edit.</param>
         public override void Execute(object? parameter)
         {
             if (parameter != null || parameter is ExerciseViewModel)

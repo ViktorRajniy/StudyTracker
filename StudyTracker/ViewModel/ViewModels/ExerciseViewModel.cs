@@ -29,12 +29,18 @@
             set { _description = value; }
         }
 
+        /// <summary>
+        /// Time of creation.
+        /// </summary>
         private DateTime _creationTime = DateTime.Now;
         public DateTime CreationTime
         {
             get { return _creationTime; }
         }
 
+        /// <summary>
+        /// Date when exercise have to be done.
+        /// </summary>
         private DateTime _deadline = DateTime.Now;
         public DateTime Deadline
         {
@@ -62,6 +68,14 @@
             set { _children = value; }
         }
 
+        /// <summary>
+        /// Initialise instancec of class.
+        /// </summary>
+        /// <param name="title">Title of exercise.</param>
+        /// <param name="deadline">Deadline date.</param>
+        /// <param name="description">Description of exercise.</param>
+        /// <param name="parent">Parent of exercise.</param>
+        /// <param name="exercises">Sub-exercises of exercise.</param>
         public ExerciseViewModel(
                                 string title,
                                 DateTime deadline,
@@ -84,6 +98,10 @@
             }
         }
 
+        /// <summary>
+        /// Add sub-exercise.
+        /// </summary>
+        /// <param name="newChild">Sub-exercise.</param>
         public void AddChild(ExerciseViewModel newChild)
         {
             Children.Add(newChild);

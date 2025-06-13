@@ -1,22 +1,25 @@
-﻿using StudyTracker.ViewModel.MVVM;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StudyTracker.ViewModel.ViewModels
+﻿namespace StudyTracker.ViewModel.ViewModels
 {
-    public class CalendarDates: ViewModelBase
-    {
-		private DateOnly _date;
+    using StudyTracker.ViewModel.MVVM;
 
-		public DateOnly Date
-		{
-			get { return _date; }
-			set { _date = value; }
+    /// <summary>
+    /// View model of calendar day element.
+    /// </summary>
+    public class CalendarDates : ViewModelBase
+    {
+        /// <summary>
+        /// Date of the day.
+        /// </summary>
+        private DateOnly _date;
+        public DateOnly Date
+        {
+            get { return _date; }
+            set { _date = value; }
         }
 
+        /// <summary>
+        /// List of exercises have to be done to this date.
+        /// </summary>
         private List<ExerciseViewModel> _exerciseList = [];
         public List<ExerciseViewModel> ExerciseList
         {
@@ -27,6 +30,10 @@ namespace StudyTracker.ViewModel.ViewModels
             }
         }
 
+        /// <summary>
+        /// Initialise instance of class.
+        /// </summary>
+        /// <param name="date"></param>
         public CalendarDates(DateOnly date)
         {
             Date = date;

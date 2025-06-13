@@ -1,6 +1,5 @@
 ﻿namespace StudyTracker.ViewModel.Commands
 {
-    using StudyTracker.Model;
     using StudyTracker.ViewModel.ViewModels;
     using System.Collections.ObjectModel;
 
@@ -20,7 +19,7 @@
         }
 
         /// <summary>
-        /// Initialise instancec of command.
+        /// Initialise instance of command.
         /// </summary>
         /// <param name="exercises">Data of user exercises.</param>
         public AddExerciseCommand(ObservableCollection<ExerciseViewModel> exercises)
@@ -30,8 +29,9 @@
 
         /// <summary>
         /// Command action. Open AddExercise window and add exercise.
+        /// If one of exercises selected - add exercise to children list.
         /// </summary>
-        /// <param name="parameter">Command parameter.</param>
+        /// <param name="parameter">Selected exercise. Can be null.</param>
         public override void Execute(object? parameter)
         {
             AddExerciseWindowViewModel win;

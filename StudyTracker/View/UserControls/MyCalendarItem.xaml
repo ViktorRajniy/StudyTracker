@@ -32,6 +32,8 @@
 					</StackPanel>
 
 					<ListBox x:Name="ExercisesListBox" ItemsSource="{Binding DateData.ExerciseList}" Background="Transparent">
+						
+						<!--Trigger of double click-->
 						<i:Interaction.Triggers>
 							<i:EventTrigger EventName="MouseDoubleClick">
 								<i:InvokeCommandAction Command="{Binding EditExercise}" CommandParameter="{Binding ElementName=ExercisesListBox, Path=SelectedItem}"/>

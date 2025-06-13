@@ -1,14 +1,12 @@
-﻿using StudyTracker.ViewModel.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-
-namespace StudyTracker.ViewModel.Commands
+﻿namespace StudyTracker.ViewModel.Commands
 {
+    using StudyTracker.ViewModel.ViewModels;
+    using System.Collections.ObjectModel;
+    using System.Windows;
+
+    /// <summary>
+    /// Delete exercise from collection of exercises.
+    /// </summary>
     class DeleteExerciseCommand : CommandBase
     {
         /// <summary>
@@ -22,7 +20,7 @@ namespace StudyTracker.ViewModel.Commands
         }
 
         /// <summary>
-        /// Initialise instancec of command.
+        /// Initialise instance of command.
         /// </summary>
         /// <param name="exercises">Data of user exercises.</param>
         public DeleteExerciseCommand(ObservableCollection<ExerciseViewModel> exercises)
@@ -31,9 +29,9 @@ namespace StudyTracker.ViewModel.Commands
         }
 
         /// <summary>
-        /// Command action. Open AddExercise window and add exercise.
+        /// Command action. Delete selected exercise from exercise collection.
         /// </summary>
-        /// <param name="parameter">Command parameter.</param>
+        /// <param name="parameter">Selected exercise.</param>
         public override void Execute(object? parameter)
         {
             if (parameter != null || parameter is ExerciseViewModel)

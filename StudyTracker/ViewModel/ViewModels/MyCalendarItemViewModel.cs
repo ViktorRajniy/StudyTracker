@@ -1,16 +1,16 @@
-﻿using StudyTracker.ViewModel.MVVM;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-
-namespace StudyTracker.ViewModel.ViewModels
+﻿namespace StudyTracker.ViewModel.ViewModels
 {
+    using StudyTracker.ViewModel.MVVM;
+    using System.Windows.Input;
+
+    /// <summary>
+    /// View model of CalendarItem.
+    /// </summary>
     public class MyCalendarItemViewModel: ViewModelBase
     {
+        /// <summary>
+        /// Dictionary of month names.
+        /// </summary>
         private readonly Dictionary<int, string> _monthDictionary = new Dictionary<int, string>()
         {
             {1, "January"  },
@@ -27,6 +27,9 @@ namespace StudyTracker.ViewModel.ViewModels
             {12, "December"  },
         };
 
+        /// <summary>
+        /// Information of that day.
+        /// </summary>
         private CalendarDates _dateData;
         public CalendarDates DateData
         {
@@ -38,6 +41,9 @@ namespace StudyTracker.ViewModel.ViewModels
             }
         }
 
+        /// <summary>
+        /// Month name string.
+        /// </summary>
         private string _month;
         public string Month
         {
@@ -58,6 +64,12 @@ namespace StudyTracker.ViewModel.ViewModels
         /// </summary>
         public ICommand EditExercise { get; }
 
+        /// <summary>
+        /// Initialise instance of class.
+        /// </summary>
+        /// <param name="add">Add exercise command.</param>
+        /// <param name="edit">Edit exercise command.</param>
+        /// <param name="dateData">Information of the day.</param>
         public MyCalendarItemViewModel(ICommand add, ICommand edit, CalendarDates dateData)
         {
             DateData = dateData;
