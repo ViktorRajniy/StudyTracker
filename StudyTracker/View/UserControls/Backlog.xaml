@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			xmlns:ui="http://schemas.modernwpf.com/2019"
              xmlns:local="clr-namespace:StudyTracker.View"
 			 xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
@@ -19,22 +20,18 @@
 		<TreeView Grid.Row="0" x:Name="BackList" ItemsSource="{Binding Exercises}" 
 				  Padding="5" MouseDoubleClick="BackList_MouseDoubleClick_1">
 
-
 			<TreeView.ItemTemplate>
 				<HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
 
-					<StackPanel Orientation="Horizontal" Width="auto">
-
-						<StackPanel DockPanel.Dock="Left">
-							<TextBlock FontSize="16" Margin="4" Text="{Binding Title}"/>
-							<TextBlock FontSize="12" Margin="2" Text="{Binding Description}"/>
-							<StackPanel Orientation="Horizontal">
-								<Label FontSize="12" Margin="0 2" Content="Deadline: "/>
-								<Label FontSize="12" Margin="0 2" Content="{Binding Deadline}"/>
-							</StackPanel>
+					<StackPanel>
+						<TextBlock FontSize="16" Margin="4" Text="{Binding Title}"/>
+						<TextBlock FontSize="12" Margin="2" Text="{Binding Description}"/>
+						<StackPanel Orientation="Horizontal">
+							<Label FontSize="12" Margin="0 2" Content="Deadline: "/>
+							<Label FontSize="12" Margin="0 2" Content="{Binding Deadline}"/>
 						</StackPanel>
-
 					</StackPanel>
+
 				</HierarchicalDataTemplate>
 			</TreeView.ItemTemplate>
 		</TreeView>

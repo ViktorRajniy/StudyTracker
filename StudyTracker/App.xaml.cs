@@ -59,6 +59,6 @@
             _exercises[_exercises.Count - 1].AddChild(new ExerciseViewModel("lab3", DateTime.Now.AddDays(-2), "ujbafujbafujbaf"));
             _exercises[_exercises.Count - 1].AddChild(new ExerciseViewModel("lab4", DateTime.Now.AddDays(-1), "ujbafujbaferwtghertgertg"));
             _exercises[_exercises.Count - 1].AddChild(new ExerciseViewModel("lab5", DateTime.Now, "ujbafujbafujbafujbafujbafujbafujbafujbafujbafujbaf"));
-        }
     }
+}
 }

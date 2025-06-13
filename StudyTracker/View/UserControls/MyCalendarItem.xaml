@@ -4,28 +4,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StudyTracker.View.UserControls"
-			 d:DataContext="{d:DesignInstance Type=local:MyCalendarItem}"
+			 xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+			 xmlns:vms="clr-namespace:StudyTracker.ViewModel.ViewModels" 
+			 d:DataContext="{d:DesignInstance Type=vms:MyCalendarItemViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="90" d:DesignWidth="120"
 			 MinHeight="90" MinWidth="160"
 			 MaxHeight="200" MaxWidth="300"
-			 Margin="3" Height="auto">
-	
-	<Grid Height="auto">
-		<Border CornerRadius="10 0 10 0" BorderBrush="LightGray" BorderThickness="2">
-			<ScrollViewer VerticalScrollBarVisibility="Hidden">
+			 Height="auto" Margin="5">
+
+	<Border CornerRadius="10 0 10 0" BorderBrush="LightGray" BorderThickness="2">
+		<Grid Height="auto">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="auto"/>
+			</Grid.RowDefinitions>
+			<ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden">
 				<StackPanel>
 					<StackPanel Orientation="Horizontal">
-						<TextBlock x:Name="DayTextBlock" Margin="5 3" FontSize="16" Text="{Binding Day}"/>
+						<TextBlock x:Name="DayTextBlock" Margin="5 3" FontSize="16" Text="{Binding Date.Day}"/>
 						<TextBlock x:Name="MonthTextBlock" Margin="5 3" FontSize="16" Text="{Binding Month}"/>
 					</StackPanel>
 					<ListBox x:Name="ExercisesListBox" ItemsSource="{Binding Exercises}" Background="Transparent">
+						<ListBox.ItemContainerStyle>
+							<Style TargetType="ListBoxItem">
+								<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+							</Style>
+						</ListBox.ItemContainerStyle>
 						<ListBox.ItemTemplate>
 							<DataTemplate>
 								<Border Background="Transparent" CornerRadius="6" BorderBrush="LightGray" BorderThickness="1">
 									<StackPanel>
-										<TextBlock Margin="3" Name="TitleText" FontSize="16" Text="{Binding Path=Title}"/>
-										<TextBlock Margin="3" Name="DeadlineText" FontSize="12" Text="{Binding Path=Deadline}"/>
+										<TextBlock TextWrapping="Wrap" Margin="3" Name="TitleText" FontSize="16" Text="{Binding Path=Title}"/>
 									</StackPanel>
 								</Border>
 							</DataTemplate>
@@ -33,6 +43,7 @@
 					</ListBox>
 				</StackPanel>
 			</ScrollViewer>
-		</Border>
-	</Grid>
+			<Button Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5" Command="{Binding AddExercise}" Content="+"/>
+		</Grid>
+	</Border>
 </UserControl>

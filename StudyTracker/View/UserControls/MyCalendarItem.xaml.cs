@@ -26,39 +26,5 @@ namespace StudyTracker.View.UserControls
         {
             InitializeComponent();
         }
-
-        private string _day = string.Empty;
-        public string Day
-        {
-            get { return _day; }
-            set
-            {
-                _day = value;
-                DayTextBlock.Text = _day;
-            }
-        }
-
-        private string _month = string.Empty;
-        public string Month
-        {
-            get { return _month; }
-            set
-            {
-                _month = value;
-                MonthTextBlock.Text = _month;
-            }
-        }
-
-        private ObservableCollection<ExerciseViewModel> _exersices = [];
-        public ObservableCollection<ExerciseViewModel> Exercises
-        {
-            get { return _exersices; }
-            set
-            {
-                _exersices = value;
-                ExercisesListBox.ItemsSource = _exersices;
-            }
-        }
-
     }
 }

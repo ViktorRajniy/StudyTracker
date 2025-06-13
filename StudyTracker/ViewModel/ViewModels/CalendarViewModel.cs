@@ -4,6 +4,7 @@
     using StudyTracker.ViewModel.MVVM;
     using System.Collections.ObjectModel;
     using System.Windows;
+    using System.Windows.Input;
 
     public class CalendarViewModel : ViewModelBase
     {
@@ -21,6 +22,16 @@
             }
         }
 
+        /// <summary>
+        /// Command to add exercise.
+        /// </summary>
+        public ICommand AddExercise { get; }
+
+        /// <summary>
+        /// Command to edit exercise.
+        /// </summary>
+        public ICommand EditExercise { get; }
+
         private List<ExerciseViewModel> _exerciseList = [];
 
         /// <summary>
@@ -29,6 +40,8 @@
         public CalendarViewModel(ObservableCollection<ExerciseViewModel> exercises)
         {
             Exercises = exercises;
+            AddExercise = new AddExerciseCommand(exercises);
+            EditExercise = new EditExerciseCommand(exercises);
         }
 
         public ObservableCollection<ExerciseViewModel> FindExerciseToDate(DateTime time)
