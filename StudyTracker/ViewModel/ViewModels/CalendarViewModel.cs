@@ -83,7 +83,7 @@
             var result = new ObservableCollection<ExerciseViewModel>();
             foreach (var findedExercise in finded)
             {
-                if(findedExercise.IsExercise)
+                if(findedExercise.WillShownInCalendar)
                 {
                     result.Add(findedExercise);
                 }

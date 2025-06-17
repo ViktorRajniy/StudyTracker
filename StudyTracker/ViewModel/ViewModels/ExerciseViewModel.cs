@@ -49,15 +49,15 @@
         }
 
         /// <summary>
-        /// Flag that show exercise is group of exercises or exercise.
+        /// Flag that show exercise in calendar.
         /// True - exercise will be shown in calendar.
         /// False - exercise will be not shown in calendar.
         /// </summary>
-        private bool _isExercise = true;
-        public bool IsExercise
+        private bool _willShownInCalendar = true;
+        public bool WillShownInCalendar
         {
-            get { return _isExercise; }
-            set { _isExercise = value; }
+            get { return _willShownInCalendar; }
+            set { _willShownInCalendar = value; }
         }
 
         /// <summary>
@@ -100,7 +100,7 @@
             Deadline = deadline;
             Title = title;
             Description = description;
-            IsExercise = isExercise;
+            WillShownInCalendar = isExercise;
             Parent = parent;
             if (exercises == null)
             {
