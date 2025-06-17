@@ -49,6 +49,18 @@
         }
 
         /// <summary>
+        /// Flag that show exercise is group of exercises or exercise.
+        /// True - exercise will be shown in calendar.
+        /// False - exercise will be not shown in calendar.
+        /// </summary>
+        private bool _isExercise = true;
+        public bool IsExercise
+        {
+            get { return _isExercise; }
+            set { _isExercise = value; }
+        }
+
+        /// <summary>
         /// Main exercise. Also parent of that node in tree.
         /// </summary>
         private ExerciseViewModel? _parent = null;
@@ -80,6 +92,7 @@
                                 string title,
                                 DateTime deadline,
                                 string description = null,
+                                bool isExercise = true,
                                 ExerciseViewModel? parent = null,
                                 ObservableCollection<ExerciseViewModel>? exercises = null)
         {
@@ -87,6 +100,7 @@
             Deadline = deadline;
             Title = title;
             Description = description;
+            IsExercise = isExercise;
             Parent = parent;
             if (exercises == null)
             {

@@ -16,6 +16,7 @@
 		<TextBox Margin="5" Text="{Binding Exercise.Title}"></TextBox>
 		<Label Margin="5" Content="Description of exercise:"/>
 		<TextBox Margin="5" Text="{Binding Exercise.Description}"></TextBox>
+		<CheckBox Margin="5" IsChecked="{Binding Exercise.IsExercise}" Content="Is this exercise group?"/>
 		<Label Margin="5" Content="Deadline of exercise:"/>
 		<DatePicker Margin="5" SelectedDate="{Binding Exercise.Deadline}"/>
 

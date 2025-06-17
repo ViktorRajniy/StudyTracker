@@ -83,7 +83,10 @@
             var result = new ObservableCollection<ExerciseViewModel>();
             foreach (var findedExercise in finded)
             {
-                result.Add(findedExercise);
+                if(findedExercise.IsExercise)
+                {
+                    result.Add(findedExercise);
+                }
             }
             return result;
         }
