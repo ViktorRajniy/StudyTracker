@@ -22,8 +22,8 @@
 
 		<!--Button panel-->
 		<StackPanel Orientation="Horizontal">
-			<Button Margin="5" DockPanel.Dock="Left" Command="{Binding ApplyCommand}">Edit</Button>
-			<Button Margin="5" DockPanel.Dock="Right" Command="{Binding CancelCommand}">Cancel</Button>
+			<Button Margin="5" Command="{Binding ApplyCommand}">Edit</Button>
+			<Button Margin="5" Command="{Binding CancelCommand}">Cancel</Button>
 		</StackPanel>
 	</StackPanel>
 </Window>

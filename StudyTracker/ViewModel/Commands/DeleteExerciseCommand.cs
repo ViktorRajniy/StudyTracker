@@ -29,12 +29,22 @@
         }
 
         /// <summary>
+        /// Return flag that show can command be execute.
+        /// </summary>
+        /// <param name="parameter">Command parameter.</param>
+        /// <returns>Flag that show that command can be executed.</returns>
+        public override bool CanExecute(object? parameter)
+        {
+            return parameter != null && parameter is ExerciseViewModel;
+        }
+
+        /// <summary>
         /// Command action. Delete selected exercise from exercise collection.
         /// </summary>
         /// <param name="parameter">Selected exercise.</param>
         public override void Execute(object? parameter)
         {
-            if (parameter != null || parameter is ExerciseViewModel)
+            if (parameter != null && parameter is ExerciseViewModel)
             {
                 var itemToDelete = (ExerciseViewModel)parameter;
                 if (itemToDelete.Children.Count != 0)

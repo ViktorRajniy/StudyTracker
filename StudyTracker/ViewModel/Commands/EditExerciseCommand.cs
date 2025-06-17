@@ -28,12 +28,22 @@
         }
 
         /// <summary>
+        /// Return flag that show can command be execute.
+        /// </summary>
+        /// <param name="parameter">Command parameter.</param>
+        /// <returns>Flag that show that command can be executed.</returns>
+        public override bool CanExecute(object? parameter)
+        {
+            return parameter != null && parameter is ExerciseViewModel;
+        }
+
+        /// <summary>
         /// Command action. Open EditExercise window and edit exercise in collection.
         /// </summary>
         /// <param name="parameter">Exercise to edit.</param>
         public override void Execute(object? parameter)
         {
-            if (parameter != null || parameter is ExerciseViewModel)
+            if (parameter != null && parameter is ExerciseViewModel)
             {
                 var param = (ExerciseViewModel)parameter;
                 var win = new EditExerciseWindowViewModel(param);
@@ -42,7 +52,7 @@
                 {
                     var oldExercise = Exercises.FirstOrDefault(e => e.CreationTime == win.Exercise.CreationTime);
                     oldExercise = win.Exercise;
-                }                
+                }
             }
         }
     }
