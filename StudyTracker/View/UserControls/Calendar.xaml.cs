@@ -1,5 +1,4 @@
 ﻿using StudyTracker.Model;
-using StudyTracker.View.UserControls;
 using StudyTracker.ViewModel.Commands;
 using StudyTracker.ViewModel.ViewModels;
 using System.Collections.ObjectModel;
@@ -17,6 +16,16 @@ namespace StudyTracker.View
         public Calendar()
         {
             InitializeComponent();
+        }
+
+        private void ListBoxItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void ListBoxItem_MouseLeave(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

@@ -42,8 +42,8 @@
         /// <summary>
         /// Collection of viewModels of calendar day element.
         /// </summary>
-        private ObservableCollection<MyCalendarItemViewModel> _daysViewModels = [];
-        public ObservableCollection<MyCalendarItemViewModel> DaysViewModels
+        private ObservableCollection<CalendarDates> _daysViewModels = [];
+        public ObservableCollection<CalendarDates> DaysViewModels
         {
             get { return _daysViewModels; }
             set
@@ -96,9 +96,8 @@
             for (int i = 0; i < 31; i++)
             {
                 var newDate = DateOnly.FromDateTime(DateTime.Today.AddDays(-15 + i));
-                DaysViewModels.Add(new MyCalendarItemViewModel(AddExercise, EditExercise,
-                                                               new CalendarDates(newDate)));
-                DaysViewModels.Last().DateData.ExerciseList = FindExerciseToDate(newDate).ToList();
+                DaysViewModels.Add(new CalendarDates(newDate, AddExercise, EditExercise));
+                DaysViewModels.Last().ExerciseList = FindExerciseToDate(newDate).ToList();
             }
         }
 

@@ -4,25 +4,100 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StudyTracker.View"
+			 xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
 			 xmlns:vms="clr-namespace:StudyTracker.ViewModel.ViewModels" 
-			 xmlns:uc="clr-namespace:StudyTracker.View.UserControls" 
 			 d:DataContext="{d:DesignInstance Type=vms:CalendarViewModel}">
 
-	<ListView ItemsSource="{Binding DaysViewModels}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-		
+	<!--ItemsSource="{Binding DaysViewModels}"-->
+	<ListBox ItemsSource="{Binding DaysViewModels}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Padding="0" 
+			 Grid.IsSharedSizeScope="True" Background="Transparent" ScrollViewer.CanContentScroll="True" >
+
 		<!--ListView resourses. Make ViewModel to View-->
-		<ListView.Resources>
+		<!--<ListBox.Resources>
 			<DataTemplate DataType="{x:Type vms:MyCalendarItemViewModel}">
-				<uc:MyCalendarItem Margin="3"/>
+				<uc:MyCalendarItem/>
 			</DataTemplate>
-		</ListView.Resources>
+		</ListBox.Resources>-->
 
 		<!--Item template-->
-		<ListView.ItemsPanel>
+		<ListBox.ItemsPanel>
 			<ItemsPanelTemplate>
-				<WrapPanel IsItemsHost="True" Margin="5"/>
+				<WrapPanel IsItemsHost="True"/>
 			</ItemsPanelTemplate>
-		</ListView.ItemsPanel>
-	</ListView>
+		</ListBox.ItemsPanel>
+
+		<ListBox.ItemContainerStyle>
+			<Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+				<Setter Property="Padding" Value="5"/>
+				<Setter Property="Focusable" Value="False"/>
+			</Style>
+		</ListBox.ItemContainerStyle>
+
+		<ListBox.ItemTemplate>
+			<DataTemplate>
+				<Grid	MinHeight="90" MinWidth="160"
+						MaxHeight="200" MaxWidth="300">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="auto" Name="ItemCollumn" SharedSizeGroup="ItemCollumn"/>
+					</Grid.ColumnDefinitions>
+
+					<Border CornerRadius="10 0 10 0" BorderBrush="LightGray" BorderThickness="2">
+						<Grid x:Name="MainGrid" Height="auto" >
+
+							<!--Grid props-->
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="auto"/>
+							</Grid.RowDefinitions>
+
+							<StackPanel>
+
+								<!--Date text-->
+								<StackPanel Orientation="Horizontal">
+									<TextBlock x:Name="DayTextBlock" Margin="5 3" FontSize="16" Text="{Binding Date.Day}"/>
+									<TextBlock x:Name="MonthTextBlock" Margin="5 3" FontSize="16" Text="{Binding Month}"/>
+								</StackPanel>
+
+								<ListBox x:Name="ExercisesListBox" ItemsSource="{Binding ExerciseList}" Background="Transparent"
+										 ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
+
+									<!--Trigger of double click-->
+									<i:Interaction.Triggers>
+										<i:EventTrigger EventName="MouseDoubleClick">
+											<i:InvokeCommandAction Command="{Binding EditExercise}" CommandParameter="{Binding ElementName=ExercisesListBox, Path=SelectedItem}"/>
+										</i:EventTrigger>
+									</i:Interaction.Triggers>
+
+									<!--ListBox container style-->
+									<ListBox.ItemContainerStyle>
+										<Style TargetType="ListBoxItem">
+											<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+											<Setter Property="VerticalContentAlignment" Value="Stretch"/>
+										</Style>
+									</ListBox.ItemContainerStyle>
+
+									<!--Item template-->
+									<ListBox.ItemTemplate>
+										<DataTemplate>
+											<Border Background="Transparent" CornerRadius="6" BorderBrush="LightGray" BorderThickness="1">
+													<TextBlock TextWrapping="Wrap" Margin="3" Name="TitleText" FontSize="16" Text="{Binding Path=Title}"/>
+											</Border>
+										</DataTemplate>
+									</ListBox.ItemTemplate>
+
+								</ListBox>
+							</StackPanel>
+
+							<!--Button-->
+							<Button Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5" Command="{Binding AddExercise}" Content="+"/>
+						</Grid>
+					</Border>
+
+				</Grid>
+
+			</DataTemplate>
+		</ListBox.ItemTemplate>
+
+	</ListBox>
 </UserControl>
