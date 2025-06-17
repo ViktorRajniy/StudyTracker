@@ -16,6 +16,8 @@
         /// </summary>
         private readonly NavigationStore _navigationStore;
 
+        public MenuViewModel MenuVM { get; }
+
         /// <summary>
         /// Instance of current view model of main field of window.
         /// </summary>
@@ -41,6 +43,7 @@
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
             _exercises = exercises;
             NavigeteTo = new NavigateMainFieldCommand(_navigationStore, _exercises);
+            MenuVM = new MenuViewModel(exercises);
         }
 
         /// <summary>

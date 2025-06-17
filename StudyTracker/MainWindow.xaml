@@ -16,6 +16,9 @@
 	<Grid>
 
 		<Grid.Resources>
+			<DataTemplate DataType="{x:Type vms:MenuViewModel}">
+				<view:Menu/>
+			</DataTemplate>
 			<DataTemplate DataType="{x:Type vms:CalendarViewModel}">
 				<view:Calendar/>
 			</DataTemplate>
@@ -37,10 +40,14 @@
 			<RowDefinition Height="auto"></RowDefinition>
 			<RowDefinition Height="*"></RowDefinition>
 		</Grid.RowDefinitions>
+
+		<!--<view:Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="2"/>-->
+		<ContentControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="2"
+						Content="{Binding MenuVM}"/>
 		
-		<view:Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="2"/>
 		<GridSplitter Grid.Row="1" ShowsPreview="False" Width="1"/>
 		<view:SidePanel Grid.Row="1" Grid.Column="0"/>
+		
 		<ContentControl Grid.Row="1" Grid.Column="2" 
 						Content="{Binding CurrentViewModel}"/>
 	</Grid>
