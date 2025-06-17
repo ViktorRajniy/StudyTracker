@@ -13,8 +13,6 @@
 		<StackPanel  Margin="10 5">
 			<Button Width="50" Height="50" Margin="0 5" Command="{Binding NavigeteTo}" CommandParameter="{x:Static enums:MainFieldType.Calendar}">C</Button>
 			<Button Width="50" Height="50" Margin="0 5" Command="{Binding NavigeteTo}" CommandParameter="{x:Static enums:MainFieldType.Backlog}">B</Button>
-			<Button Width="50" Height="50" Margin="0 5" Command="{Binding NavigeteTo}" CommandParameter="{x:Static enums:MainFieldType.GantDiagram}">G</Button>
-			<Button Width="50" Height="50" Margin="0 5"></Button>
 		</StackPanel>
 	</Grid>
 </UserControl>
